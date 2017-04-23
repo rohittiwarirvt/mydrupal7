@@ -1,0 +1,553 @@
+/* Custom CSS */
+.block-content h2 {
+  text-align: center;
+  color: #000000;
+  font-size: 30px;
+  margin: 50px 0px;
+  text-transform: uppercase;
+  position: relative;
+}
+.front h2::before {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 70px;
+    background-color: #cccccc;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: -20px;
+}
+.flip-container
+{
+    position:relative;
+    -webkit-perspective:1000;
+    perspective:1000;
+    min-height: 250px;
+}
+.flip-cards {
+    height: 150px;
+    position: relative;
+    display: block;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+.flip-cards .front-card {
+    background: transparent;
+    border: 2px solid #6B7FD7;
+    display: flex;
+    align-items: flex-end;
+    text-transform: uppercase;
+}
+.flip-cards .reverse-card {
+    background: #6B7FD7;
+}
+
+.flip-cards:hover
+{
+    transform: rotateY( 180deg );
+    -webkit-transform: rotateY(180deg);
+}
+
+.flip-cards .front-card,
+.flip-cards .reverse-card
+{
+    width:98%;
+    min-height:180px;
+    position:absolute;   
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+.reverse-card {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    padding: 35px;
+    font-size: 18px;
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY( 180deg );
+}
+.plus-ico {
+    font-size: 25px;
+    border: 2px solid #6b7fd7;
+    color: #6b7fd7;
+    float: left;
+    width: 40px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 1em;
+    margin-right: 20px;
+}
+.front-content {
+    width: 100%;
+    padding: 20px;
+}
+.front-content .section-label {
+    font-size : 20px;
+    color: #000;
+}
+span.light-color {
+    color: #929292;
+}
+/* Area of focus */
+.focus-area {
+  min-height: 505px;
+  background: url("../images/prohaktiv-home-area-of-focus.jpg");
+  background-repeat: no-repeat;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.focus-area .well {
+  background-color: #ffffff;
+  border-top: 7px solid #b2c609;
+  height: 550px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  margin-top: 40px;
+  min-height: 240px;
+  overflow: hidden;
+  padding-top: 35px;
+  -webkit-transition: height 1s;
+  -moz-transition: height 1s;
+  -o-transition: height 1s;
+  transition: height 1s;
+}
+@media (min-width: 768px) {
+  .focus-area .well {
+    height: 150px !important;
+  }
+}
+.focus-area .well ul {
+  padding-left: 5px;
+}
+.focus-area .well li {
+  display: inherit;
+  margin-bottom: 10px;
+}
+.focus-area .well li p {
+  margin: 0px 10px 0px 25px;
+}
+.focus-area .well .icon-bullet {
+  color: #0084e4;
+  display: inline;
+  float: left;
+  font-size: 18px;
+  padding: 0;
+  position: inherit;
+  width: 22px;
+}
+.focus-area .well .icon-bullet::before {
+  background-color: transparent;
+  border-radius: 50%;
+  padding: 0px;
+}
+@media (min-width: 768px) {
+  .focus-area .well {
+    min-height: 170px;
+  }
+}
+.focus-area .acordion {
+  position: relative;
+}
+@media (min-width: 768px) {
+  .focus-area .acordion {
+    bottom: -240px;
+    position: absolute;
+    width: 90%;
+  }
+}
+.focus-area .acordion ul {
+  margin-top: 60px;
+}
+.focus-area .acordion:hover .well {
+  cursor: pointer;
+  height: 550px !important;
+}
+@media (min-width: 768px) {
+  .focus-area .acordion:hover .well {
+    height: 420px !important;
+  }
+}
+.focus-area h1 {
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 90px !important;
+  color: #ffffff;
+  margin: 50px 0px;
+}
+.focus-area h3 {
+  text-align: center;
+}
+.focus-area h2 {
+  color: #fff;
+}
+.focus-area i {
+  display: block;
+  font-size: 70px;
+  text-align: center;
+  top: 0px;
+  color: #ffffff;
+}
+@media (min-width: 768px) {
+  .focus-area i {
+    position: absolute;
+    width: 90%;
+  }
+}
+.focus-area i::before {
+  background-color: #0084e4;
+  border-radius: 50%;
+  padding: 25px;
+}
+/* Slider image */
+.container-fluid {
+  padding: 0;
+}
+.container-fluid .row {
+  margin: 0;
+}
+/* temp css */
+.front section#block-system-main {
+    display: none;
+}
+span.sr-icon {
+    position: absolute;
+    top: 13px;
+    display: block;
+    align-content: center;
+    left: 40%;
+    text-indent: -9999px;
+}
+.sr-development {
+    background: url(../images/prohaktiv-home-services.png) #b2c609;
+    height: 60px;
+    width: 60px;
+    background-repeat: no-repeat;
+    border-radius: 30px;
+    background-position: 5px 8px;
+}
+.sr-mobile {
+    background: url(../images/prohaktiv-home-services.png) #b2c609;
+    height: 60px;
+    width: 60px;
+    background-repeat: no-repeat;
+    border-radius: 30px;
+    background-position: -44px 6px;
+}
+.sr-consult {
+    background: url(../images/prohaktiv-home-services.png) #b2c609;
+    height: 60px;
+    width: 60px;
+    background-repeat: no-repeat;
+    border-radius: 30px;
+    background-position: -94px 6px;
+}
+.sr-marketing {
+    background: url(../images/prohaktiv-home-services.png) #b2c609;
+    height: 60px;
+    width: 60px;
+    background-repeat: no-repeat;
+    border-radius: 30px;
+    background-position: -145px 7px; 
+}
+.col-md-12.footer-section {
+  background: url(../images/prohaktiv-home-contact.jpg);
+  min-height: 528px;
+}
+.block-content .footer-section-1 h2 {
+  color: #fff;
+}
+.block-content .footer-section-1 {
+  color: #fff;
+}
+section#block-block-5 {
+    background: #000;
+    color: #fff;
+    padding: 20px;
+}
+.focus-area .well h2 {
+    margin: 0;
+}
+.highlight-color {
+  color: #b2c609;
+  font-weight: bold;
+}
+/* Footer Contact widget */
+.address-widget h5 {
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.address-widget {
+  margin-left: 5em;
+}
+.address-widget span {
+    display: block;
+    padding: 5px 0px;
+    position: relative;
+}
+.address-widget span a {
+  color: #fff;
+}
+.address-widget span:before {
+    width: 27px;
+    height: 24px;
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: -2.5em;
+    top: 1px;
+}
+span.location:before {
+    background: url(../images/prohaktiv-home-address-icons.png) 51px 1px;
+}
+span.toll-number:before {
+    background: url(../images/prohaktiv-home-address-icons.png) 1px 1px;
+}
+span.email:before {
+    background: url(../images/prohaktiv-home-address-icons.png) 25px 1px;
+}
+section#block-webform-client-block-7 {
+    position: relative;
+    top: 10em;
+}
+#block-webform-client-block-7 .form-control {
+  width: 43%;
+  float: left;
+  margin-right: 26px;
+  margin-bottom: 20px;
+}
+.webform-component-textarea .grippie {
+  display: none;
+}
+#block-webform-client-block-7 .webform-component-textarea .form-textarea-wrapper textarea {
+  width: 90%;
+}
+#block-webform-client-block-7 .btn {
+  background: #b2c609;
+  border-color: #b2c609;
+  color: #fff;
+  box-shadow: 4px 4px 0 #d1e625;
+}
+/* Slider */
+/***
+Caraousel CSS
+******************/
+#caraousel { min-height: 600px; }
+.caraouselMainContainer { width: 100%; float: left; height: 600px; background: #ffffff; position: relative; overflow: hidden; }
+.caraouselContainer { width: 2400px; height: 600px; float: left; position: absolute; top: 0px; left: 50%; margin-left: -1200px; cursor: pointer; }
+.caraouselThumbContainer { position: relative; }
+.smallThumbContainer { width: 400px; height: 600px; float: left; position: relative; }
+.smallThumb { width: 400px; height: 300px; position: absolute; overflow: hidden; cursor: pointer; }
+.smallThumb img { width: 100%; height: 100%; }
+.bigThumb { width: 800px; height: 600px; position: absolute; overflow: hidden; }
+#one { left: 0; top: 0; }
+#two { left: 0; top: 300px; }
+#three { left: 400px; top: 0; }
+#four { left: 400px; top: 300px; }
+#five { left: 800px; top: 0; width: 800px; height: 600px; }
+#six { left: 1600px; top: 0; }
+#seven { left: 1600px; top: 300px; }
+#eight { left: 2000px; top: 0; }
+#nine { left: 2000px; top: 300px; }
+.clientName { position: absolute; top: 100px; width: 400px; height: 100px; text-align: center; font-family: 'Raleway', sans-serif; font-weight:200; font-size: 40px; color: #ffffff; z-index: 3; text-transform: uppercase; }
+.clientLogo { position: absolute; top: 100px; width: 800px; height: 250px; text-align: center; z-index: 3; display:none; }
+.smallThumb .clientLogo img { width: auto !important; height: auto !important; }
+.caption { position: absolute; top: 400px; text-align: center; width: 600px; height: 200px; color: #ffffff;  font-family: 'gilroylight'; font-size: 26px; line-height: 34px; z-index: 3; left: 100px; display:none; }
+.thumbOverlay { background: url(../images/overlay.png) repeat; position: absolute; width: 800px; height: 600px; left: 0; top: 0; z-index: 2; }
+.mobileContainer { display: none; }
+.slide { position: relative; }
+.slideOverlay { background: url(../images/overlay.png) repeat; position: absolute; width: 100%; height: 100%; left: 0; top: 0; z-index: 2; display: none; }
+.slideLogo { width: 100%; text-align: center; position: absolute; top: 20%; left: 0; z-index: 3; display: none; }
+.slideLogo img { display: inline-block !important; }
+.slideCaption { font-family: 'sofialight', Arial; font-size: 16px; color: #fff; position: absolute; top: 60%; left: 0; text-align: center; width: 100%; padding: 0 15px; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; z-index: 3; display: none; }
+.bx-pager { display: none; }
+.clientsLogoCont { text-align: center; margin: 20px 0 0; }
+.clientsLogoCont img { max-width: 100%; }
+.clientLogo {
+  font-size: 60px;
+  color: #fff;
+  font-weight: bold;
+}
+.caption {
+    font-size: 
+}
+/* Service  page */
+.main-container .col-sm-12 {
+  padding: 0;
+}
+.page-header {
+  display: none;
+}
+.field.field-name-field-hero-image-tagline {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    padding: 0;
+    top: 8em;
+    margin: auto;
+}
+.field.field-name-field-hero-image-tagline h1 {
+  font-size: 40px;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.field.field-name-field-hero-image-tagline p {
+    width: 50%;
+    margin: auto;
+    font-size: 24px;
+    color: #fff;
+}
+p.center-content {
+    width: 70%;
+    text-align: center;
+    margin: auto;
+    font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.servicesSection {
+  border-top: 1px solid #ccc;
+  margin-top: 30px;
+}
+.serviceRow {
+    background: #fff;
+    height: 225px;
+    border-bottom: 1px #cccccc solid;
+    transition: background 0.3s linear;
+    -moz-transition: background 0.3s linear;
+    -webkit-transition: background 0.3s linear;
+    cursor: pointer;
+    overflow: hidden;
+}
+.serviceRow:hover {
+    background: #f1f1f1;
+}
+.serviceRowContent {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    z-index: 99;
+}
+.serviceRow h2 {
+    font-size: 36px;
+    background: -webkit-linear-gradient(right, #284f8c 50%, #284f8c);
+    color: #284f8c;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 0 0 5px 0;
+    text-transform: uppercase;
+    margin: 0;
+}
+.serviceRow h6 {
+    font-size: 20px;
+    color: #7C7C7C;
+    width: 70%;
+}
+.serviceRowInnerWrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
+}
+.serviceRowInnerWrap:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 82px;
+    right: 0;
+    position: absolute;
+    top: 4em;
+}
+.serviceRowInnerWrap.software:after{
+  background: url("../images/prohaktive-services-all-services-icon.png") 0px 0px;
+}
+.serviceRowInnerWrap.software:hover:after  {
+  background: url("../images/prohaktive-services-all-services-icon.png") 0px -80px;
+}
+.serviceRowInnerWrap.mobile:after{
+  background: url("../images/prohaktive-services-all-services-icon.png") -73px 0px;
+}
+.serviceRowInnerWrap.mobile:hover:after{
+  background: url("../images/prohaktive-services-all-services-icon.png") -73px -80px;
+}
+.serviceRowInnerWrap.technology:after{
+  background: url("../images/prohaktive-services-all-services-icon.png") -158px 0px;
+}
+.serviceRowInnerWrap.technology:hover:after{
+  background: url("../images/prohaktive-services-all-services-icon.png") -158px -80px;
+}
+.serviceRowInnerWrap.web:after{
+  background: url("../images/prohaktive-services-all-services-icon.png") -237px 0px;
+}
+.serviceRowInnerWrap.web:hover:after{
+  background: url("../images/prohaktive-services-all-services-icon.png") -237px -80px;
+}
+.serviceRowInnerWrap.digital:after{
+  background: url("../images/prohaktive-services-all-services-icon.png") -320px 0px;
+}
+.serviceRowInnerWrap.digital:hover:after{
+  background: url("../images/prohaktive-services-all-services-icon.png") -320px -80px;
+}
+.software-bgSr1, .mobile-bgSr1, .technology-bgSr1, .web-bgSr1, .digital-bgSr1 {
+    top: 0;
+    left: -20px;
+}
+.software-bgSr1.SrAnimation, .mobile-bgSr1.SrAnimation, .technology-bgSr1.SrAnimation, .web-bgSr1.SrAnimation,
+.digital-bgSr1.SrAnimation {
+    opacity: 1;
+    top: -10px;
+    transition-delay: 0.4s;
+}
+.mobile-bgSr1.SrAnimation {
+  top: -45px;
+}
+.technology-bgSr1.SrAnimation {
+  top: -35px;
+}
+.software-bgSr2, .mobile-bgSr2, .technology-bgSr2, .web-bgSr2, .digital-bgSr2 {
+    bottom: 0;
+    left: 74%;
+}
+.software-bgSr2.SrAnimation, .mobile-bgSr2.SrAnimation, .technology-bgSr2.SrAnimation, .web-bgSr2.SrAnimation,
+.digital-bgSr2.SrAnimation {
+    bottom: -5em;
+    opacity: 1;
+    left: 74%;
+    transition-delay: 0.2s;
+}
+.digital-bgSr2.SrAnimation {
+  bottom: -2em;
+}
+.bgSr1, .bgSr2 {
+    position: absolute;
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+}
+/* About Us Page */
+.image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    background: url("../images/about/about-prohaktiv.png") no-repeat;
+    height: 866px;
+    margin:-60px 0 0 -60px;
+-webkit-animation: rotate 90s infinite linear;
+    -moz-animation: rotate 90s infinite linear;
+    animation: rotate 90s infinite linear;
+}
+/*@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }*/

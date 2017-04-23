@@ -1,0 +1,15 @@
+Host github.com
+HostName github.com
+IdentityFile ~/.ssh/id_rsa
+User rohitt-webonise
+
+Host github.com-rohittiwarirvt
+HostName github.com
+IdentityFile ~/.ssh/rohittiwarirvt
+User rohittiwarrvt
+
+Host github.com-urmila
+HostName github.com
+IdentityFile ~/.ssh/urmila
+User urmila26
+
