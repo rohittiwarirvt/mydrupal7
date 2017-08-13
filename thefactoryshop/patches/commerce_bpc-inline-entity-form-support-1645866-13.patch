@@ -1,0 +1,59 @@
+diff --git a/commerce_bpc.module b/commerce_bpc.module
+index 1be3f98..6b2931d 100644
+--- a/commerce_bpc.module
++++ b/commerce_bpc.module
+@@ -198,40 +198,27 @@ function commerce_bpc_field_delete_instance($instance) {
+ }
+ 
+ /**
+- * Implements  hook_form_BASE_FORM_ID_alter().
++ * Implements hook_node_prepare().
+  *
+- * Prepopulate product reference fields in the node creation form after
+- * bulk creation.
++ * @see commerce_bpc_form_node_form_alter()
+  */
+-function commerce_bpc_form_node_form_alter(&$form, &$form_state, $form_id) {
+-  // If we reach the node form after being redirected from the bulk
+-  // creation form, there will be a GET parameter that contains a
++function commerce_bpc_node_prepare($node) {
++  // If we reach a new node creation / the node form after being redirected from
++  // the bulk creation form, there will be a GET parameter that contains a
+   // unique ID telling us where to find the IDs of the created products
+   // in the session array.
++  // Using this hook should be compatible with all field widget types that use
++  // the given $items array in the widget hooks.
+   if (isset($_GET['bulk_creation_id'])
+-  && isset($_SESSION['bulk_product_ids'][$_GET['bulk_creation_id']])) {
++    && isset($_SESSION['bulk_product_ids'][$_GET['bulk_creation_id']])) {
+ 
++    $node->title = $_SESSION['bulk_title'][$_GET['bulk_creation_id']];
+     $ids = $_SESSION['bulk_product_ids'][$_GET['bulk_creation_id']];
+-    $form['title']['#default_value'] = $_SESSION['bulk_title'][$_GET['bulk_creation_id']];
+-
+-    $field_name = _commerce_bpc_get_reference_field_name($form['type']['#value']);
+-    $field = field_info_field($field_name);
+-
+-    switch ($form[$field_name][LANGUAGE_NONE]['#type']) {
+-      case 'textfield':
+-        // The autocomplete text field uses SKUs, so we need to retrieve those.
+-        $products = commerce_product_load_multiple($ids);
+-        $skus = array();
+-        foreach ($products as $product) {
+-          $skus[] = $product->sku;
+-        }
+-        $form[$field_name][LANGUAGE_NONE]['#default_value'] = implode(', ', $skus);
+-        break;
+-
+-      case 'select':
+-      case 'checkboxes':
+-        $form[$field_name][LANGUAGE_NONE]['#default_value'] = $ids;
+-        break;
++    if ($field_name = _commerce_bpc_get_reference_field_name($node->type)) {
++      $node->{$field_name} = array(LANGUAGE_NONE => array());
++      foreach ($ids as $id) {
++        $node->{$field_name}[LANGUAGE_NONE][] = array('product_id' => $id);
++      }
+     }
+   }
+ }
