@@ -6468,4 +6468,138 @@ a.icon-after .glyphicon {
   margin-left: .25em;
   margin-right: -.25em; }
 
+@font-face {
+  font-family: "Roboto Condensed";
+  src: url("../fonts/roboto-condensed/Zd2E9abXLFGSr9G3YK2MsDAdhzWOYhqHvOZMRGaEyPo.woff2") format("woff2"), url("../fonts/roboto-condensed/b9QBgL0iMZfDSpmcXcE8nHm2hrkyco9jQ3NKMXpgOBg.woff2") format("woff2"), url("../fonts/roboto-condensed/RobotoCondensed-Regular.ttf") format("ttf"); }
+html body {
+  font-family: Roboto Condensed, sans-serif; }
+
+html .front .main-container.container-fluid section {
+  padding: 0; }
+
+body {
+  max-width: 1308px; }
+
+.front .panels-flexible-1 .panels-flexible-region {
+  width: 100%; }
+
+.front .panels-flexible-row.Header {
+  display: none; }
+
+.front h3.pane-title {
+  text-align: center;
+  font-size: 26px;
+  margin: 0 0 10px;
+  padding: 0 20px; }
+
+.add-to-cart {
+  background: url(../images/misc/icon-cart.png) no-repeat 15px center;
+  color: #666;
+  font-size: 16px;
+  padding: 7px 15px 7px 39px;
+  margin: 0 4px;
+  border-radius: 3px; }
+  .add-to-cart:hover, .view-home-page-catalog .views-row:hover .add-to-cart {
+    color: #fff;
+    background: #e74847 url(../images/misc/icon-cart-over.png) no-repeat 15px center;
+    border-color: #e74847; }
+
+.html .navbar.container,
+.html .navbar.container-fluid {
+  margin: 0;
+  padding: 0;
+  background-color: inherit;
+  border-color: transparent; }
+
+.header-top {
+  border-bottom: 1px solid #ddd;
+  overflow: hidden; }
+
+#block-system-user-menu {
+  float: right; }
+  #block-system-user-menu ul > li {
+    float: left; }
+
+.header-middle {
+  clear: both;
+  padding: 45px 0; }
+
+header a:hover, header a:active, header a:visited {
+  text-decoration: none; }
+
+.header-bottom {
+  background: #272727;
+  box-shadow: 0px 2px 4px -1px #BBB;
+  border-top: 1px #e8e5e5 solid; }
+  .header-bottom a {
+    padding: 16px 25px;
+    border-right: 1px solid #3a3a3a;
+    font-size: 16px;
+    color: #fff; }
+    .header-bottom a:hover {
+      background: #e74847; }
+
+.view-home-page-catalog ul {
+  list-style: none; }
+.view-home-page-catalog .views-row {
+  text-align: center; }
+.view-home-page-catalog .views-field-field-image ul {
+  position: relative;
+  height: 480px;
+  overflow: hidden; }
+  .view-home-page-catalog .views-field-field-image ul li {
+    transform: translateY(0);
+    -moz-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transition: all 0.3s ease-in-out; }
+    .view-home-page-catalog .views-field-field-image ul li:last-child {
+      position: absolute;
+      top: 0; }
+  .view-home-page-catalog .views-field-field-image ul:hover li:last-child {
+    transform: translateY(100%);
+    -moz-transform: translateY(100%);
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transition: all 0.3s ease-in-out; }
+
+#flexslider-1 {
+  border: none;
+  box-shadow: none; }
+
+.testimonial-home-page-block {
+  background: url(../images/misc/bg-client.jpg) no-repeat center;
+  background-size: cover;
+  color: #fff;
+  text-align: center; }
+  .testimonial-home-page-block .flexslider {
+    background: inherit;
+    border: none; }
+  .testimonial-home-page-block .pane-title {
+    display: inline-block;
+    margin: 80px 0 50px 0;
+    font-size: 26px;
+    font-weight: bold; }
+  .testimonial-home-page-block .views-field-body p {
+    margin: 0 0 20px; }
+  .testimonial-home-page-block .views-field-title span {
+    font-size: 16px;
+    font-weight: bold; }
+  .testimonial-home-page-block .view {
+    width: 77%;
+    margin: auto; }
+    .testimonial-home-page-block .view .flex-control-thumbs {
+      width: 40%;
+      margin: auto; }
+      .testimonial-home-page-block .view .flex-control-thumbs li {
+        margin: 0 10px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%; }
+
+.view.view-home-page-top-category {
+  width: 90%;
+  margin: auto; }
+  .view.view-home-page-top-category .masonry-item.views-row-last {
+    width: 60%; }
+
 /*# sourceMappingURL=style.css.map */

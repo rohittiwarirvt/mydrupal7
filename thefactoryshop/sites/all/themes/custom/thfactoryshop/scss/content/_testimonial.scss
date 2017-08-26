@@ -1,0 +1,51 @@
+.testimonial-home-page-block {
+  background: url(../images/misc/bg-client.jpg) no-repeat center;
+  background-size: cover;
+  .flexslider {
+    background: inherit;
+    border: none;
+  }
+  color: #fff;
+  text-align: center;
+  .pane-title {
+    display: inline-block;
+    margin:  80px 0 50px 0;
+    font-size: 26px;
+    font-weight: bold;
+  }
+  .views-field-body {
+    p {
+      margin: 0 0 20px;
+    }
+  }
+  .views-field-title {
+    span {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+  }
+  .view {
+    width: 77%;
+    margin: auto;
+    .flex-control-thumbs {
+      width: 40%;
+      margin: auto;
+      li {
+       margin: 0 10px;
+       border-radius: 50%;
+      -webkit-border-radius: 50%;
+        // &:before {
+        //   content: "";
+        //   height: 100%;
+        //   width: 100%;
+        //   position: absolute;
+        //   top: 0;
+        //   left: 0;
+        //   background: #fff;
+        //   opacity: 0.5;
+        // }
+      }
+    }
+  }
+}
