@@ -1,0 +1,22 @@
+<?php
+
+
+/**
+ * hook_form_alter()
+ * @param  [type] &$form       [description]
+ * @param  [type] &$form_state [description]
+ * @param  [type] $form_id     [description]
+ * @return [type]              [description]
+ */
+
+function tfs_common_form_alter(&$form, &$form_state, $form_id) {
+  if (commerce_form_callback($form_id, $form_state) == "commerce_cart_add_to_cart_form") {
+    $form['submit']['#attributes']['class'][] = "add-to-cart";
+   // dsm($form['submit']['#attributes']['class']);
+    $form['submit']['#icon']= NULL;
+  }
+}
+
+function tfs_common_init() {
+  //dsm("test");
+}

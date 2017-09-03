@@ -1010,6 +1010,7 @@ function drupal_find_base_themes($themes, $key, $used_keys = array()) {
  * @see template_process()
  */
 function theme($hook, $variables = array()) {
+
   // If called before all modules are loaded, we do not necessarily have a full
   // theme registry to work with, and therefore cannot process the theme
   // request properly. See also _theme_load_registry().
@@ -1085,6 +1086,7 @@ function theme($hook, $variables = array()) {
 
   // Merge in argument defaults.
   if (!empty($info['variables'])) {
+//        dsm($info['variables']);
     $variables += $info['variables'];
   }
   elseif (!empty($info['render element'])) {
@@ -1158,6 +1160,7 @@ function theme($hook, $variables = array()) {
   $output = '';
   if (isset($info['function'])) {
     if (function_exists($info['function'])) {
+
       $output = $info['function']($variables);
     }
   }

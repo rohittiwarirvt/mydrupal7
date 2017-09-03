@@ -1,0 +1,44 @@
+.view-home-page-catalog{
+  ul {
+    list-style: none;
+  }
+  .views-row {
+    text-align: center;
+    &:hover {
+      .add-to-cart {
+        @extend .add-to-cart:hover
+      }
+    }
+  }
+  .views-field-field-image {
+    ul {
+       position: relative;
+       height: 480px;
+       overflow: hidden;
+       li {
+         &:last-child {
+           position: absolute;
+           top: 0;
+         }
+         transform: translateY(0);
+         -moz-transform: translateY(0);
+         -webkit-transform: translateY(0);
+         -ms-transform: translateY(0);
+         transition: all 0.3s ease-in-out;
+       }
+       &:hover {
+          li {
+            &:last-child {
+              transform: translateY(100%);
+              -moz-transform: translateY(100%);
+              -webkit-transform: translateY(100%);
+              -ms-transform: translateY(100%);
+              transition: all 0.3s ease-in-out;
+
+            }
+          }
+       }
+    }
+  }
+}
+

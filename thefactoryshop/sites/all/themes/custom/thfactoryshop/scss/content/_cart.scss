@@ -1,0 +1,38 @@
+#block-commerce-popup-cart-commerce-popup-cart {
+  .wrapper {
+    .cart-icon {
+      background: url('../images/misc/bags.png') no-repeat;
+    }
+    .cart_popup_count {
+      font-size: 16px;
+      line-height: inherit;
+      height: 32px;
+      width: 32px;
+      border-radius: 32px;
+      border: 2px solid #fff;
+      line-height: 27px;
+      text-align: center;
+      background: #e74847;
+      color: #fff;
+      position: absolute;
+      left: 30px;
+      top: 25px
+    }
+    #cart-popup {
+      right: -160px;
+      margin-top: 10px;
+    }
+    .popup-arrow {
+      right: 127px;
+    }
+  }
+  .right-content {
+    h3 {
+      color: #666;
+      font-weight: 700;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+  }
+  margin-right: 10%;
+}

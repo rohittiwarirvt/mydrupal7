@@ -1,0 +1,10 @@
+.view.view-home-page-top-category {
+ width: 90%;
+ margin:auto;
+  .masonry-item {
+    &.views-row-last {
+      width: 60%;
+    }
+  }
+}
+

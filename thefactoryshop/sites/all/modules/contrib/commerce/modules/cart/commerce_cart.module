@@ -2224,7 +2224,7 @@ function commerce_cart_add_to_cart_form($form, &$form_state, $line_item, $show_q
     else {
       $form['submit'] = array(
         '#type' => 'submit',
-        '#value' => t('Add to cart'),
+        '#value' => t('Add fto cart'),
         '#weight' => 50,
       );
     }

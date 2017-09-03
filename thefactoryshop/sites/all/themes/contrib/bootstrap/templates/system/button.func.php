@@ -20,6 +20,7 @@
  * @ingroup theme_functions
  */
 function bootstrap_button($variables) {
+  //ddebug_backtrace();
   $element = $variables['element'];
   $text = $element['#value'];
 
