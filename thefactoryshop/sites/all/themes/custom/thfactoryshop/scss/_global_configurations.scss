@@ -61,9 +61,16 @@ body {
   padding: 7px 15px 7px 39px;
   margin: 0 4px;
   border-radius: 3px;
+  border-color: #ccc;
+  > span {
+    display: none;
+  }
   &:hover {
     color: #fff;
     background: $factoryred url(../images/misc/icon-cart-over.png) no-repeat 15px center;
     border-color: $factoryred;
   }
+}
+div.messages.commerce-add-to-cart-confirmation {
+  z-index: 999;
 }

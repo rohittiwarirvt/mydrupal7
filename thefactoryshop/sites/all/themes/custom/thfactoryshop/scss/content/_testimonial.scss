@@ -1,5 +1,6 @@
 .testimonial-home-page-block {
   background: url(../images/misc/bg-client.jpg) no-repeat center;
+  height: 100%;
   background-size: cover;
   .flexslider {
     background: inherit;
@@ -31,10 +32,17 @@
     .flex-control-thumbs {
       width: 40%;
       margin: auto;
+      margin-top: 20px;
       li {
        margin: 0 10px;
        border-radius: 50%;
-      -webkit-border-radius: 50%;
+       -webkit-border-radius: 50%;
+       background: #fff;
+       overflow: hidden;
+       img {
+         width: 50%;
+         margin: auto
+       }
         // &:before {
         //   content: "";
         //   height: 100%;

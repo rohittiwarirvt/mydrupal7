@@ -185,13 +185,13 @@
   <footer class="footer <?php print $container_class; ?>">
     <div class="row col-md-12">
           <?php if (!empty($page['footer_left'])): ?>
-            <div class="footer-left col-md-3" >
+            <div class="footer-left col-md-4" >
             <?php print render($page['footer_left']); ?>
             </div>
           <?php endif; ?>
 
           <?php if (!empty($page['footer_right'])): ?>
-            <div class="footer-right col-md-9">
+            <div class="footer-right col-md-8">
             <?php print render($page['footer_right']); ?>
             </div>
           <?php endif; ?>
