@@ -9,6 +9,22 @@
 .header-top {
   border-bottom: 1px solid #ddd;
   overflow: hidden;
+  .block-menu {
+    ul  {
+      li {
+        a {
+          color: #666;
+          display: block;
+          line-height: 22px;
+          padding: 6px 10px;
+          font-size: 12px;
+          &:hover {
+            color: $factoryred;
+          }
+        }
+      }
+    }
+  }
 }
 
 #block-system-user-menu {
@@ -20,7 +36,8 @@
 
 .header-middle {
   clear: both;
-  padding: 45px 0
+  padding: 45px 0;
+
 }
 
 header a {
