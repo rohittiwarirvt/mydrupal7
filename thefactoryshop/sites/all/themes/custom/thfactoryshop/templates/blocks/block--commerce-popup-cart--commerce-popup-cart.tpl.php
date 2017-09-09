@@ -55,6 +55,7 @@
       <?php if ($title): ?>
         <h3<?php print $title_attributes; ?>><?php print $title; ?></h3>
       <?php endif;?>
+       <span class="text">item(s) - Rs <?php print $product_total; ?></span>
       <?php print render($title_suffix); ?>
     </div>
   </div>

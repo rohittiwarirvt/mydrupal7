@@ -6517,7 +6517,8 @@ a.icon-after .glyphicon, .breadcrumb-wrapper .breadcrumb li.icon-after .glyphico
   font-family: "Roboto Condensed";
   src: url("../fonts/roboto-condensed/Zd2E9abXLFGSr9G3YK2MsDAdhzWOYhqHvOZMRGaEyPo.woff2") format("woff2"), url("../fonts/roboto-condensed/b9QBgL0iMZfDSpmcXcE8nHm2hrkyco9jQ3NKMXpgOBg.woff2") format("woff2"), url("../fonts/roboto-condensed/RobotoCondensed-Regular.ttf") format("ttf"); }
 html body {
-  font-family: Roboto Condensed, sans-serif; }
+  font-family: Roboto Condensed, sans-serif;
+  color: #666; }
 
 html .front .main-container.container-fluid section {
   padding: 0; }
@@ -6735,7 +6736,8 @@ header a:hover, header .breadcrumb-wrapper .breadcrumb li:hover, .breadcrumb-wra
       background: #b11817; }
 
 #block-commerce-popup-cart-commerce-popup-cart {
-  margin-right: 10%; }
+  margin-right: 5%;
+  width: 18%; }
   #block-commerce-popup-cart-commerce-popup-cart .wrapper .cart-icon {
     background: url("../images/misc/bags.png") no-repeat; }
   #block-commerce-popup-cart-commerce-popup-cart .wrapper .cart_popup_count {
