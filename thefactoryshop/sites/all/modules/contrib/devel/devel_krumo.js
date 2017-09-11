@@ -60,6 +60,18 @@ Drupal.behaviors.devel = {
         }
       }
     );
+
+    $('.krumo-element.krumo-expand').on('click', function() {
+      krumo.toggle(this);
+    });
+
+    $('.krumo-element.krumo-expand').on('onmousehover', function() {
+      krumo.over(this);
+    });
+
+    $('.krumo-element.krumo-expand').on('onmouseout', function() {
+      krumo.out(this);
+    });
   }
 };
 

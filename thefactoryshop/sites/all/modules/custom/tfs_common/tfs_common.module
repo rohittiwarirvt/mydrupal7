@@ -25,11 +25,10 @@ function tfs_common_preprocess_commerce_popup_cart_cart(&$variables) {
 // @todo add validations
 // commerce_currency_format(123, 'INR');
   $variables['product_total'] = number_format($variables['variables']['order']->commerce_order_total[LANGUAGE_NONE][0]['amount'], 2);
- // dsm($variables);
+  //var_dump($variables['variables']['order']);
+  //dsm($variables['variables']['order']);
 }
 
 
-function tfs_common_process_commerce_cart_block(&$vars) {
 
- // $vars = number_format_$vars['order']->commerce_order_total[LANGUAGE_NONE][0]['amount']
-}
+

@@ -46,16 +46,11 @@
  */
 ?>
 <section id="<?php print $block_html_id; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-  <div class="row">
-    <div class="col-md-5 left-content" >
        <?php print $content ?>
-    </div>
-    <div class="col-md-7 right-content">
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
         <h3<?php print $title_attributes; ?>><?php print $title; ?></h3>
       <?php endif;?>
-       <span class="text">item(s) - Rs <?php print $product_total; ?></span>
       <?php print render($title_suffix); ?>
     </div>
   </div>

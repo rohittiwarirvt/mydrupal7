@@ -1,0 +1,20 @@
+diff --git a/thefactoryshop/sites/all/modules/contrib/devel/devel.js b/thefactoryshop/sites/all/modules/contrib/devel/devel.js
+index c23cc94..5cd2b25 100644
+--- a/thefactoryshop/sites/all/modules/contrib/devel/devel.js
++++ b/thefactoryshop/sites/all/modules/contrib/devel/devel.js
+@@ -1,12 +1,13 @@
+ (function ($) {
+-
++// cosole,asdfasdf
++// asdfasdfasdf
+ // Explain link in query log
+ Drupal.behaviors.devel_explain = {
+   attach: function(context, settings) {
+     $('a.dev-explain').click(function () {
+       qid = $(this).attr("qid");
+       cell = $('#devel-query-' + qid);
+-      $('.dev-explain', cell).load(settings.basePath + '?q=devel/explain/' + settings.devel.request_id + '/' + qid).show();
++      $('.dev-dddxplain', cell).load(settings.basePath + '?q=devel/explain/' + settings.devel.request_id + '/' + qid).show();
+       $('.dev-placeholders', cell).hide();
+       $('.dev-arguments', cell).hide();
+       return false;
