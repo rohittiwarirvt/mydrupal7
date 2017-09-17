@@ -6,7 +6,8 @@ configure = admin/config/development/devel
 tags[] = developer
 files[] = devel.test
 files[] = devel.mail.inc
-
+scripts[] = devel_krumo.js
+stylesheets[all][] = devel_krumo.css
 ; Information added by Drupal.org packaging script on 2014-05-01
 version = "7.x-1.5"
 core = "7.x"

@@ -1,0 +1,27 @@
+.not-front {
+  .container-fluid {
+    &.main-container {
+      max-width: 1200px;
+      margin:auto;
+    }
+  }
+}
+.breadcrumb-wrapper {
+  .breadcrumb {
+
+   a {
+      font-size: 13px;
+      color: #909090;
+   }
+   li {
+    @extend a
+   }
+
+   max-width: 1200px;
+   margin:auto;
+   background: inherit;
+   padding: 15px 0;
+  }
+  background: #efefef;
+  margin-bottom: 10px;
+}
