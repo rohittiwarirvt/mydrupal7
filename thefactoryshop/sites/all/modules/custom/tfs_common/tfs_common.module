@@ -1,21 +1,10 @@
 <?php
 
 
-/**
- * hook_form_alter()
- * @param  [type] &$form       [description]
- * @param  [type] &$form_state [description]
- * @param  [type] $form_id     [description]
- * @return [type]              [description]
- */
+module_load_include('inc', 'tfs_common', 'includes/tfs_common_form');
 
-function tfs_common_form_alter(&$form, &$form_state, $form_id) {
-  if (commerce_form_callback($form_id, $form_state) == "commerce_cart_add_to_cart_form") {
-    $form['submit']['#attributes']['class'][] = "add-to-cart";
-   // dsm($form['submit']['#attributes']['class']);
-    $form['submit']['#icon']= NULL;
-  }
-}
+
+
 
 function tfs_common_init() {
   //dsm("test");
@@ -25,10 +14,61 @@ function tfs_common_preprocess_commerce_popup_cart_cart(&$variables) {
 // @todo add validations
 // commerce_currency_format(123, 'INR');
   $variables['product_total'] = number_format($variables['variables']['order']->commerce_order_total[LANGUAGE_NONE][0]['amount'], 2);
-  //var_dump($variables['variables']['order']);
-  //dsm($variables['variables']['order']);
 }
 
+function tfs_common_preprocess_commerce_popup_cart_empty(&$variables) {
+  $variables['product_count'] = $variables['product_total'] = 0;
+}
+
+function tfs_common_block_info() {
+  $blocks['thefactory_signin_signup_menu'] = array(
+    'info' => 'On Header Login Logout Block',
+    'cache' => 'DRUPAL_CACHE_GLOBAL'
+    );
+
+  return $blocks;
+}
+
+function tfs_common_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'thefactory_signin_signup_menu':
+      $block['subject'] = t("test");
+      $block['content'] = theme('tfs_common_login_logout', array('title' => t("This is the content of menu")));
+
+      # code...
+      break;
+
+    default:
+      # code...
+      break;
+  }
+
+  return $block;
+}
+
+function tfs_common_theme($existing, $type, $theme, $path) {
+  $default_template_path = drupal_get_path('module','tfs_common') . '/theme';
+  return array(
+    'tfs_common_login_logout' => array(
+      'variables' => NULL,
+      'path' => $default_template_path,
+      'template' => 'tfs_common_login_logout',
+      )
+    );
+}
+
+function template_preprocess_tfs_common_login_logout(&$variables) {
+    global $user;
+
+    $variables['is_logged_in'] = user_is_logged_in();
+    if (!$variables['is_logged_in']) {
+     $variables['login_form'] = drupal_get_form('user_login_block');
+    } else {
+      $variables['logout_link'] = t(' <a href="@url">Logout</a> @user', array('@url' => url('admin'), '@user' => $user->name));
+    }
+
+}
 
 
 

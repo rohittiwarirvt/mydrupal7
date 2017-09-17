@@ -118,7 +118,7 @@
       </div>
     <?php endif; ?>
   </div>
-  <div class="header-bottom">
+  <div class="header-bottom clearfix">
     <?php if (!empty($page['header_bottom'])): ?>
       <div class="navbar-header-bottom">
         <nav role="navigation">
