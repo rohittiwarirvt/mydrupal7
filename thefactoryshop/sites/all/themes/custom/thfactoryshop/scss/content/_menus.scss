@@ -3,11 +3,33 @@
   padding: 0 15px;
   float: left;
 }
+.logged-in {
+  .logout {
+    padding: 0 20px;
+    color: #fff;
+  }
+  .header-menu-login-logout {
+    a {
+      &:hover {
+        background-color: transparent;
+        color: #fff;
+      }
+      color: #272727;
+    }
+    height: 48px;
+    .user-logout {
+      float: right;
+    }
+  }
+  #block-superfish-1 {
+    width: 80%;
+  }
+}
 .header-menu-login-logout {
   float: left;
   position: relative;
   background-color: $factoryred;
-  .dropdown {
+  .dropdown, .logout {
     &:after{
       border-color: transparent transparent #c71b1a;
       border-style: none solid solid;

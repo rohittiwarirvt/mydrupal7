@@ -2,8 +2,7 @@
   .cloud-zoom-container {
     padding: 20px;
     #wrap  {
-      float: right !important;
-      margin-right: 10%;
+      float: none !important;
     }
     .cloud-zoom-gallery-thumbs {
        > a {
@@ -12,6 +11,64 @@
        }
       width: 25%;
       text-align: center;
+    }
+    @include clearfix()
+  }
+  .flex-viewport {
+    clear: both;
+    margin: 20px auto;
+    width: 400px;
+  }
+  .flex-direction-nav {
+    a {
+      top: 92%;
+      opacity: 1;
+      -webkit-transition: all 0.3s ease-in-out 0s;
+      -moz-transition: all 0.3s ease-in-out 0s;
+      transition: all 0.3s ease-in-out 0s;
+      &.flex-prev {
+        left: -5px;
+        background-position: -36px 0px;
+        &:hover{
+          background-position: 0px 0px;
+        }
+      }
+      &.flex-next {
+        right: -5px;
+        background-position: -70px 0px;
+        &:hover{
+          background-position: -108px 0px;
+        }
+        text-align: inherit;
+      }
+      &:before {
+        content: " ";
+      }
+      background: url('../images/misc/next-prev-detail.png');
+      background-repeat: no-repeat;
+      text-indent: -999px;
+      width: 30px;
+      height: 30px;
+      border: 1px solid #dfdfdf;
+      border-radius: 4px;
+      -webkit-transition: all 0.3s ease-in-out 0s;
+      -moz-transition: all 0.3s ease-in-out 0s;
+      transition: all 0.3s ease-in-out 0s;
+      &:hover {
+        border-color: $factoryred;
+        background-color: $factoryred;
+      }
+    }
+  }
+  #cloud-zoom-gallery-thumnail-flexlider {
+    margin-bottom: 60px;
+    position: relative;
+    .img-responsive {
+        margin: auto ;
+    }
+    div#cloud-zoom-big {
+      width: 420px !important;
+      background-repeat: no-repeat;
     }
   }
 }

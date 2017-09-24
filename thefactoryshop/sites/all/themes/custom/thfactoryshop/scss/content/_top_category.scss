@@ -13,13 +13,32 @@
         left: 30px;
         z-index: 2;
         transition: all 0.5s ease-in-out;
+        padding: 5px 0 10px 0;
+        width: 91.5%;
+        text-align: left;
         a {
           h3 {
             font-size: 2.2em;
             font-weight: bold;
           }
           text-decoration: none;
-          color: #666;
+          color: #484747;
+        }
+        &:hover {
+          transition: all 0.5s ease-in-out;
+          background: rgba(0,0, 0,.3);
+          text-align: left;
+          padding-left: 3%;
+          a {
+            h3 {
+              color: $factoryred;
+            }
+          }
+          .view-more {
+            a {
+              color: #fff;
+            }
+          }
         }
       }
     }
@@ -28,7 +47,8 @@
         & + .text-wrapper {
           transition: all 0.5s ease-in-out;
           background: rgba(0,0, 0,.3);
-          width: 91.5%;
+          text-align: left;
+          padding-left: 3%;
           a {
             h3 {
               color: $factoryred;

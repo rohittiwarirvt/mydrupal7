@@ -1,7 +1,8 @@
 <div class="header-menu-login-logout">
 <?php if ($is_logged_in): ?>
   <div class="logout">
-    <span><?php print $logout_link ?></span>
+    <div class="welcome"> Welcome, <span>  <?php print $user_name; ?></span> </div>
+    <div class="user-logout"> <a href="/user/logout">Logout</a>
   </div>
 <?php else: ?>
   <div class=" dropdown">
@@ -18,5 +19,4 @@
       </div>
     </div>
 <?php endif; ?>
-
 
