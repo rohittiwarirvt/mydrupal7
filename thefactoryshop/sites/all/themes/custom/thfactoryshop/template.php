@@ -27,3 +27,10 @@ function thefactoryshop_preprocess_views_view_unformatted(&$vars) {
   // dsm($vars['classes_array'][1]);
 }
 
+
+
+function thefactoryshop_cloud_zoom_image_gallery($variables) {
+  flexslider_add('cloud-zoom-gallery-thumnail-flexlider','cloudzoomslider');
+  return "<div id='cloud-zoom-gallery-thumnail-flexlider'>" .theme_cloud_zoom_image_gallery($variables) .'</div>';
+}
+

@@ -65,10 +65,9 @@ function template_preprocess_tfs_common_login_logout(&$variables) {
     if (!$variables['is_logged_in']) {
      $variables['login_form'] = drupal_get_form('user_login_block');
     } else {
-      $variables['logout_link'] = t(' <a href="@url">Logout</a> @user', array('@url' => url('admin'), '@user' => $user->name));
+      $variables['user_name'] = t(' @user', array('@url' => url('admin'), '@user' => $user->name));
     }
 
 }
-
 
 

@@ -18,12 +18,22 @@
   }
   .footer-right {
     h3 {
-      color: #fff
+      color: #fff;
+      font-weight: 700;
+      font-size: 20p;
     }
     li {
       padding: 5px 15px;
+      font-family: Arial, Helvetica, sans-serif;
       a {
         padding: 0;
+        font-size: 12px;
+        &:hover {
+          color: $factoryred;
+        }
+        &:before {
+          margin-right: 10px;
+        }
       }
     }
     .region-footer-right {
@@ -73,8 +83,16 @@
     margin-top: 8px
   }
   &:before {
+    background: url(../images/misc/footer-background.jpg);
     background-size: cover;
     opacity: 0.25;
-    background: url("../images/misc/footer-background.jpg") no-repeat left 0;
+    content: " ";
+    height: 79%;
+    width: 35%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
   }
+  position: relative;
 }
