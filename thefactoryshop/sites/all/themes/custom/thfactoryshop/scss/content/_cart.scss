@@ -1,0 +1,99 @@
+#block-commerce-popup-cart-commerce-popup-cart {
+  .wrapper {
+    .cart-icon {
+      background: url('../images/misc/bags.png') no-repeat;
+    }
+    .cart_popup_count {
+      font-size: 16px;
+      line-height: inherit;
+      height: 32px;
+      width: 32px;
+      border-radius: 32px;
+      border: 2px solid #fff;
+      line-height: 27px;
+      text-align: center;
+      background: #e74847;
+      color: #fff;
+      position: absolute;
+      left: 30px;
+      top: 25px
+    }
+    #cart-popup {
+      right: -160px;
+      margin-top: 10px;
+    }
+    .popup-arrow {
+      right: 127px;
+    }
+  }
+  .right-content {
+    h3 {
+      color: #666;
+      font-weight: 700;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+    padding-left: 0;
+  }
+  margin-right: 5%;
+  width: 20%;
+}
+
+.html div.messages.commerce-add-to-cart-confirmation {
+  .message-inner {
+    .added-product-title {
+      color: $factoryred;
+      width: auto;
+      float: none;
+      font-size:inherit;
+    }
+    .button-wrapper {
+      width: 32%;
+      float: right;
+      margin-right: 5%;
+      margin-top: 5%;
+      background-color: inherit;
+      height: inherit;
+      padding: inherit;
+      position: inherit;
+      .button.checkout {
+        background-color: $factoryred;
+      }
+
+    }
+    .view-confirm-message-product-display {
+      .views-field-quantity {
+         span {
+          font-size: 16px;
+         }
+      }
+      .views-field-commerce-total {
+        .view-label {
+          color: #878380;
+        }
+        .field-content {
+          color: $factoryred;
+          float: none
+        }
+      }
+      float: left;
+      width: 50%;
+      margin-top: 5%;
+      clear: none;
+      .view-content {
+        width: auto;
+        position: inherit;
+      }
+    }
+  }
+  width: 400px;
+  border-color: #e6e6e6;
+  overflow: visible;
+  .close {
+    display: none;
+  }
+   .commerce-add-to-cart-confirmation-close {
+      right: -10px;
+      top: -10px;
+   }
+}

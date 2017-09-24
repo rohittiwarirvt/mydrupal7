@@ -1,0 +1,27 @@
+.navbar #block-search-form   {
+  &.block-search {
+    float: left;
+    width: 45%;
+    .input-group {
+      input {
+        background: #ededed;
+        height: 40px;
+        padding: 0 40px;
+        font-size: 11px;
+        color: #909090;
+        border: none;
+      }
+      width: 100%;
+    }
+    .btn-primary {
+      padding: 5px 16px;
+      &:hover {
+        background: #b11817;
+      }
+      background: $factoryred;
+      border: none;
+      height: 40px;
+    }
+  }
+}
+

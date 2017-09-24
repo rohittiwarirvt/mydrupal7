@@ -1,0 +1,99 @@
+#block-superfish-1 {
+  width: 88%;
+  padding: 0 15px;
+  float: left;
+}
+.logged-in {
+  .logout {
+    padding: 0 20px;
+    color: #fff;
+  }
+  .header-menu-login-logout {
+    a {
+      &:hover {
+        background-color: transparent;
+        color: #fff;
+      }
+      color: #272727;
+    }
+    height: 48px;
+    .user-logout {
+      float: right;
+    }
+  }
+  #block-superfish-1 {
+    width: 80%;
+  }
+}
+.header-menu-login-logout {
+  float: left;
+  position: relative;
+  background-color: $factoryred;
+  .dropdown, .logout {
+    &:after{
+      border-color: transparent transparent #c71b1a;
+      border-style: none solid solid;
+      border-width: 0 0 10px 10px;
+      bottom: 100%;
+      content: "";
+      height: 0;
+      left: -10px;
+      position: absolute;
+      width: 0;
+    }
+    .dropdown-menu {
+      padding-top: 30px;
+      min-width: 290px;
+      background: #fff;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+      min-height: 240px;
+      .row {
+        margin: 0;
+      }
+      .form-actions {
+        a {
+          width: 100%;
+          color: #8a8a8a;
+          display: block;
+          background: #e6e4e4;
+          font-size: 12px;
+          margin-top: 9px;
+          padding: 10px;
+          text-align: center;
+          &:hover {
+            color: $factoryred;
+          }
+        }
+      }
+    }
+  }
+  &:before{
+    content: "";
+    height: 10px;
+    width: 100%;
+    background: #e74847;
+    bottom: 100%;
+    left: 0;
+    position: absolute;
+  }
+  a {
+    border: none;
+    color: #fff;
+    &:hover {
+      color: #ccc;
+    }
+    padding: 16px 0 10px 10px;
+  }
+  .tfs-sign-up {
+    &:before {
+      content: "/ ";
+      padding: 0 5px;
+      color: #fff;
+    }
+    padding-right: 10px;
+    padding-left: 0;
+  }
+  .quick-login {
+
+  }
+}
