@@ -1,0 +1,13 @@
+name = Laundry
+description = Custom Development for Laundry
+core = 7.x
+package = Custom
+
+
+
+; Information added by Drupal.org packaging script on 2014-04-10
+version = "7.x-2.3"
+core = "7.x"
+project = "laundry"
+datestamp = "1397134155"
+

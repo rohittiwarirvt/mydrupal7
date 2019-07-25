@@ -1,0 +1,75 @@
+<?php
+
+
+
+/**
+ * Implements hook_init().
+ */
+function laundry_init() {
+   //print "in custom";
+}
+
+function laundry_node_submit($node, $form, &$form_state) {
+
+   if($node->type == 'order') {
+      $email = $node->field_customer_email['und'][0]['email'];
+      $first_name = $node->field_first_name['und'][0]['value'];  $last_name = $node->field_last_name['und'][0]['value'];
+      $addr = $node->field_address['und'][0]['value'];
+      $phonenumber =  $node->field_phone_number['und'][0]['phonenumber'];
+      $user = user_load_by_mail($email);
+     if(empty($user)) {
+       // create new  if new
+        $fields = array(
+          'name' => $email,
+          'mail' =>  $email,
+          'pass' => $email,
+          'status' => 0,
+          'init' => 'email address',
+          'roles' => array(
+            DRUPAL_AUTHENTICATED_RID => 'authenticated user',
+          ),
+          'field_first_name' => array('und' => array( 0 => array('value' => $first_name,),),),
+          'field_last_name' => array('und' => array( 0 => array('value' => $last_name,),),),
+          'field_address' => array('und' => array( 0 => array('value' => $addr,),),),
+          'field_phone_number' => array('und' => array( 0 => array('phonenumber' => $phonenumber,),),),
+        );
+        //the first parameter is left blank so a new user is created
+        $account = user_save('', $fields);
+     }
+   }
+}
+
+
+
+function laundry_form_order_node_form_alter(&$form, &$form_state, $form_id) {
+  //print "HIII<pre>"; print_r($form);print "</pre>";
+  ////dpm($form);
+  $form['#prefix'] = '<div id="div-example">';
+  $form['#suffix'] = '</div>';
+  //$form['submit'] = array(
+  //  '#type' => 'submit',
+  //  '#value' => t('Calculate'),
+  //  '#ajax' => array(
+  //      'callback' => 'sample_ajax_form_callback',
+  //      'wrapper' => 'div-example',
+  //    ),
+  //);
+  
+   $form['field_laundry_detail']['#ajax'] = array(
+         'event' => 'change',   
+        'callback' => 'sample_ajax_form_callback',
+        'wrapper' => 'div-example',
+
+  );
+}
+
+function sample_ajax_form_callback($form, &$form_state) {
+    $commands = array();
+    $output = '<div id = "div-example">' . 'Your form submitted successfully1' . '</div>';
+    $commands[] = ajax_command_replace('#div-example', $output);
+    $element = array(
+      '#type' => 'ajax', 
+      '#commands' => $commands
+    );
+    return $element;
+  }

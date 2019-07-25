@@ -1,0 +1,12 @@
+{
+    "name": "rtiwari/laundry",
+    "require": {
+        "drush/drush": "8.1.17"
+    },
+    "authors": [
+        {
+            "name": "Rohit Tiwari",
+            "email": "rtiwari@evolenthealth.com"
+        }
+    ]
+}
