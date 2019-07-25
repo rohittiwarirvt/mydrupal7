@@ -24,6 +24,7 @@ sites/all/themes/README.txt
 web.config
 authorize.php
 cron.php
+vendor/
 index.php
 install.php
 update.php
