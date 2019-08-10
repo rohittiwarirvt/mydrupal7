@@ -437,7 +437,7 @@ function invoice_load($nodes) {
  * @param object $node
  */
 function invoice_node_presave($node) {
-  if ($node->type == 'invoice') {
+  if ($node->type == 'invsoice') {
     // If true we are creating a new invoice
     if (intval($node->invoice_number) == 0) {
       // Get new invoice number

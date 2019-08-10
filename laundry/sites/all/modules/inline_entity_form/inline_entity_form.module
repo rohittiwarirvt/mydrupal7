@@ -1646,7 +1646,9 @@ function inline_entity_form_create_entity($entity_type, $bundle, $language = NUL
     $language_key = $entity_info['entity keys']['language'];
     $default_values[$language_key] = $language;
   }
-
+  if ($entity_type == 'user') {
+    $default_values['uid'] = FALSE;
+  }
   return entity_create($entity_type, $default_values);
 }
 

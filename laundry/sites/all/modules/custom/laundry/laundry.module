@@ -11,7 +11,7 @@ function laundry_init() {
 
 function laundry_node_submit($node, $form, &$form_state) {
 
-   if($node->type == 'order') {
+   if($node->type == 'or1der') {
       $email = $node->field_customer_email['und'][0]['email'];
       $first_name = $node->field_first_name['und'][0]['value'];  $last_name = $node->field_last_name['und'][0]['value'];
       $addr = $node->field_address['und'][0]['value'];
@@ -41,7 +41,7 @@ function laundry_node_submit($node, $form, &$form_state) {
 
 
 
-function laundry_form_order_node_form_alter(&$form, &$form_state, $form_id) {
+function laundry_form_order_node_form_alter($form, &$form_state, $form_id) {
   //print "HIII<pre>"; print_r($form);print "</pre>";
   ////dpm($form);
   $form['#prefix'] = '<div id="div-example">';
@@ -54,9 +54,9 @@ function laundry_form_order_node_form_alter(&$form, &$form_state, $form_id) {
   //      'wrapper' => 'div-example',
   //    ),
   //);
-  
+
    $form['field_laundry_detail']['#ajax'] = array(
-         'event' => 'change',   
+         'event' => 'change',
         'callback' => 'sample_ajax_form_callback',
         'wrapper' => 'div-example',
 
@@ -68,8 +68,21 @@ function sample_ajax_form_callback($form, &$form_state) {
     $output = '<div id = "div-example">' . 'Your form submitted successfully1' . '</div>';
     $commands[] = ajax_command_replace('#div-example', $output);
     $element = array(
-      '#type' => 'ajax', 
+      '#type' => 'ajax',
       '#commands' => $commands
     );
     return $element;
   }
+
+
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function laundry_entity_info_alter(&$entity_info) {
+  if (isset($entity_info['user'])) {
+    $entity_info['user']['inline entity form'] = array(
+      'controller' => 'UserInlineEntityFormController',
+    );
+  }
+}
