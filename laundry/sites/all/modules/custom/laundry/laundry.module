@@ -3,86 +3,137 @@
 
 
 /**
- * Implements hook_init().
+ * Implements hook_menu()
  */
-function laundry_init() {
-   //print "in custom";
-}
 
-function laundry_node_submit($node, $form, &$form_state) {
+function laundry_menu() {
+  $items = array();
 
-   if($node->type == 'or1der') {
-      $email = $node->field_customer_email['und'][0]['email'];
-      $first_name = $node->field_first_name['und'][0]['value'];  $last_name = $node->field_last_name['und'][0]['value'];
-      $addr = $node->field_address['und'][0]['value'];
-      $phonenumber =  $node->field_phone_number['und'][0]['phonenumber'];
-      $user = user_load_by_mail($email);
-     if(empty($user)) {
-       // create new  if new
-        $fields = array(
-          'name' => $email,
-          'mail' =>  $email,
-          'pass' => $email,
-          'status' => 0,
-          'init' => 'email address',
-          'roles' => array(
-            DRUPAL_AUTHENTICATED_RID => 'authenticated user',
-          ),
-          'field_first_name' => array('und' => array( 0 => array('value' => $first_name,),),),
-          'field_last_name' => array('und' => array( 0 => array('value' => $last_name,),),),
-          'field_address' => array('und' => array( 0 => array('value' => $addr,),),),
-          'field_phone_number' => array('und' => array( 0 => array('phonenumber' => $phonenumber,),),),
-        );
-        //the first parameter is left blank so a new user is created
-        $account = user_save('', $fields);
-     }
-   }
-}
-
-
-
-function laundry_form_order_node_form_alter($form, &$form_state, $form_id) {
-  //print "HIII<pre>"; print_r($form);print "</pre>";
-  ////dpm($form);
-  $form['#prefix'] = '<div id="div-example">';
-  $form['#suffix'] = '</div>';
-  //$form['submit'] = array(
-  //  '#type' => 'submit',
-  //  '#value' => t('Calculate'),
-  //  '#ajax' => array(
-  //      'callback' => 'sample_ajax_form_callback',
-  //      'wrapper' => 'div-example',
-  //    ),
-  //);
-
-   $form['field_laundry_detail']['#ajax'] = array(
-         'event' => 'change',
-        'callback' => 'sample_ajax_form_callback',
-        'wrapper' => 'div-example',
-
+  $items['laundry/invoice/print/%'] = array(
+    'title' => 'Invoice in HTML print format',
+    'page callback' => '_laundry_invoice_view_print',
+    'page arguments' => array(2),
+    'access arguments' => array('access invoices'),
+    'type' => MENU_CALLBACK,
   );
-}
 
-function sample_ajax_form_callback($form, &$form_state) {
-    $commands = array();
-    $output = '<div id = "div-example">' . 'Your form submitted successfully1' . '</div>';
-    $commands[] = ajax_command_replace('#div-example', $output);
-    $element = array(
-      '#type' => 'ajax',
-      '#commands' => $commands
-    );
-    return $element;
-  }
+  $items['laundry/invoice/pdf/%'] = array(
+    'title' => 'Invoice in PDF format',
+    'page callback' => '_laundry_invoice_view_pdf',
+    'page arguments' => array(2),
+    'access arguments' => array('access invoices'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
 
 
 
 /**
- * Implements hook_entity_info_alter().
+ * printing callback
+ * @return [type] [description]
  */
-function laundry_entity_info_alter(&$entity_info) {
-  if (isset($entity_info['user'])) {
-    $entity_info['user']['inline entity form'] = array(
-      'controller' => 'UserInlineEntityFormController',
-    );
+function _laundry_invoice_view_print($invoice_number) {
+  echo _laundry_invoice_get_html($invoice_number);
+}
+
+
+/**
+ * pdf printing callback
+ */
+
+function _laundry_invoice_view_pdf() {
+
+}
+
+
+
+
+/**
+ * Helper function to get the invoice in HTML format
+ *
+ * @param integer $invoice_number
+ * @param object  $node
+ * @param string  $type
+ */
+function _laundry_invoice_get_html($invoice_number, $type = 'print') {
+
+
+  $html = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"'
+    . ' "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">' . "\n";
+  $html .= '<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" dir="ltr">' . "\n";
+  $html .= '<head>' . "\n";
+  $html .= '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />' ."\n";
+
+  $protocol = _laundry_invoice_get_transfer_protocol() . '://';
+  $stylesheetPath = drupal_get_path('module', 'invoice')
+      . '/templates/' . $node->invoice['template'] . '.css';
+
+  if ($type == 'pdf') {
+    $html .= '<style type="text/css">';
+    $html .= "\n". file_get_contents(DRUPAL_ROOT . '/' . $stylesheetPath) ."\n";
+    $html .= '</style>' ."\n";
   }
+  else {
+    $html .= '<link type="text/css" rel="stylesheet" media="all" href="' . $protocol
+      . $_SERVER['HTTP_HOST'] . base_path() . $stylesheetPath .'" />' . "\n";
+  }
+
+  $html .= '</head><body class="' . $type . '">';
+
+  $html .= theme('invoice_body', array('node' => $node, 'type' => $type));
+
+  // The eurosign is not supported as applicable character, so replace it with a ascii code
+  $html = str_replace('€', '&#0128;', $html);
+
+  $html .= '</body></html>';
+  return $html;
+}
+
+
+/**
+ * Returns the current transfer protocol HTTP or HTTPS
+ */
+function _laundry_invoice_get_transfer_protocol() {
+  return isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == 'on' ? 'https' : 'http';
+}
+
+
+/**
+ * Implements hook_theme()
+ *
+ * @param  array $existing
+ * @param  string $type
+ * @param  string $theme
+ * @param  string $path
+ * @return array
+ */
+function laundry_theme($existing, $type, $theme, $path) {
+  return array(
+    'invoice_body' => array(
+      'variables' => array('node' => NULL, 'type' => NULL),
+    )
+  );
+}
+
+
+
+/**
+ * Theme function for displaying the invoice
+ */
+function theme_invoice_body($variables) {
+  $node = $variables['node'];
+  $type = $variables['type'];
+
+  $content = '<div class="invoice-wrapper">';
+
+  require_once dirname(__FILE__) . '/templates/default.inc';
+  drupal_add_css(drupal_get_path('module', 'invoice') . '/templates/default.css');
+
+  $content_function = '_laundry_invoice_default_get_template_output';
+  $content .= $content_function($node, $type);
+  $content .= '</div>';
+
+  return $content;
 }

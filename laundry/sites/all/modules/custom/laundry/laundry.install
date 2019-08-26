@@ -1,0 +1,25 @@
+<?php
+
+
+/**
+ *
+ */
+
+function laundry_install() {
+  variable_set('laundry_invoice_locale', 'en_US.utf8');
+  variable_set('laundry_invoice_date_format', 'm/d/Y');
+  variable_set('laundry_invoice_pay_limit', '14'); // Pay limit in days
+  variable_set('laundry_invoice_vat', '19'); // VAT percentage
+  variable_set('laundry_invoice_invoice_number_zerofill', 4);
+  variable_set('laundry_invoice_invoice_number_prefix', '%Y');
+  variable_set('laundry_invoice_default_template', 'default');
+  variable_set('laundry_invoice_supplier_company_name', 'My company');
+
+  variable_set('laundry_invoice_display_column_vat', 0); // By default the VAT column is not displayed,
+                                                 // however if there is more than 1 different VAT
+                                                 // the VAT column will still be shown. (is required by law)
+  variable_set('laundry_invoice_display_column_exunitcost', 1);
+  variable_set('laundry_invoice_display_column_incunitcost', 1);
+  variable_set('laundry_invoice_display_column_extotal', 1);
+  variable_set('laundry_invoice_display_column_inctotal', 1);
+}
