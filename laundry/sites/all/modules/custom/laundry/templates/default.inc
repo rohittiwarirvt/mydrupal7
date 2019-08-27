@@ -20,7 +20,6 @@ function _laundry_invoice_default_get_template_output($invoice, $type = NULL) {
   ob_start();
 
   // Create alias
-  $template =& $invoice->invoice['template'];
 
   // Set full url path to template
   $path_to_template = _invoice_get_transfer_protocol() . '://' . $_SERVER['HTTP_HOST'] . base_path() . path_to_theme('module', 'laundry') . '/templates';
@@ -32,9 +31,9 @@ function _laundry_invoice_default_get_template_output($invoice, $type = NULL) {
     $pagenum = '';
   }
 
-  $footer_content = '' . _invoice_get_variable($template, 'supplier_company_name')
-    . ' | Acc. 12345, Foobank Foocity | CoC nr. ' . _invoice_get_variable($template, 'supplier_coc_number')
-    . ' | VAT nr. ' . _invoice_get_variable($template, 'supplier_vat_number') . '';
+  $footer_content = '' . variable_get("supplier_company_name", 'supplier_company_name')
+    . ' | Acc. 12345, Foobank Foocity | CoC nr. ' . variable_get("supplier_coc_number", 'supplier_coc_number')
+    . ' | VAT nr. ' . variable_get("supplier_vat_number", 'supplier_vat_number') . '';
 
   if ($type == 'pdf') {
     $footer = '<script type="text/php">
@@ -119,15 +118,15 @@ function _laundry_invoice_default_get_template_output($invoice, $type = NULL) {
     </td>
     <td class="three">
      <div class="supplier-wrapper">
-       <div class="company-name"><img id="invoice-supplier-logo" src="'. $path_to_template .'/default_logo.png" alt="'. check_plain(_invoice_get_variable($template, 'supplier_company_name')) .'" /></div>
-       <div class="address"><span class="street">' . check_plain(_invoice_get_variable($template, 'supplier_street')) . '</span> <span class="building-number">' . check_plain(_invoice_get_variable($template, 'supplier_building_number')) . '</span></div>
-       <div class="zipcode-city"><span class="zipcode">' . check_plain(_invoice_get_variable($template, 'supplier_zipcode')) . '</span> <span class="city">' . check_plain(_invoice_get_variable($template, 'supplier_city')) . '</span></div>
-       <div class="state">' . check_plain(_invoice_get_variable($template, 'supplier_state')) . '</div>
-       <div class="country break">' . check_plain(_invoice_get_variable($template, 'supplier_country')) . '</div>
-       <div class="phone">' . check_plain(_invoice_get_variable($template, 'supplier_phone')) . '</div>
-       <div class="fax">' . check_plain(_invoice_get_variable($template, 'supplier_fax')) . ' </div>
-       <div class="email">' . check_plain(_invoice_get_variable($template, 'supplier_email')) . '</div>
-       <div class="web">' . check_plain(_invoice_get_variable($template, 'supplier_web')) . '</div>
+       <div class="company-name"><img id="invoice-supplier-logo" src="'. $path_to_template .'/default_logo.png" alt="'. check_plain(variable_get("supplier_company_name", 'supplier_company_name')) .'" /></div>
+       <div class="address"><span class="street">' . check_plain(variable_get("supplier_street", 'supplier_street')) . '</span> <span class="building-number">' . check_plain(variable_get("supplier_building_number", 'supplier_building_number')) . '</span></div>
+       <div class="zipcode-city"><span class="zipcode">' . check_plain(variable_get("supplier_zipcode", 'supplier_zipcode')) . '</span> <span class="city">' . check_plain(variable_get("supplier_city", 'supplier_city')) . '</span></div>
+       <div class="state">' . check_plain(variable_get("supplier_state", 'supplier_state')) . '</div>
+       <div class="country break">' . check_plain(variable_get("supplier_country", 'supplier_country')) . '</div>
+       <div class="phone">' . check_plain(variable_get("supplier_phone", 'supplier_phone')) . '</div>
+       <div class="fax">' . check_plain(variable_get("supplier_fax", 'supplier_fax')) . ' </div>
+       <div class="email">' . check_plain(variable_get("supplier_email", 'supplier_email')) . '</div>
+       <div class="web">' . check_plain(variable_get("supplier_web", 'supplier_web')) . '</div>
      </div>
     </td>
   </tr>
