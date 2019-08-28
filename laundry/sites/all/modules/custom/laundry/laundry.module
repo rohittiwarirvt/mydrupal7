@@ -25,10 +25,10 @@ function laundry_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  $items['laundry-test/invoice/print/%'] = array(
+  $items['laundry-test/invoice/print/%node'] = array(
     'title' => 'Invoice in HTML print format',
     'page callback' => '_laundry_test_invoice_view_print',
-    'page arguments' => array(2),
+    'page arguments' => array(3),
     'access arguments' => array('access invoices'),
     'type' => MENU_CALLBACK,
   );
@@ -127,7 +127,7 @@ function _laundry_invoice_get_transfer_protocol() {
 function laundry_theme($existing, $type, $theme, $path) {
   return array(
     'invoice_body' => array(
-      'variables' => array('node' => NULL, 'type' => NULL),
+      'variables' => array('node' => NULL),
     )
   );
 }
@@ -139,7 +139,7 @@ function laundry_theme($existing, $type, $theme, $path) {
  */
 function theme_invoice_body($variables) {
   $node = $variables['node'];
-  $type = $variables['type'];
+  #$type = $variables['type'];
 
   $content = '<div class="invoice-wrapper">';
 
@@ -155,13 +155,16 @@ function theme_invoice_body($variables) {
 
 
 function _laundry_test_invoice_get_html($node) {
-      $html .= theme('invoice_body', array('node' => $node, 'type' => $type));
+  $html = "";
+  $html .= theme('invoice_body', array('node' => $node));
 
-      return $html;
+  return $html;
 }
 
 
 function template_preprocess_invoice_body(&$variables) {
-  $variables['node']->customer['company_name'] ="EvolentHealth";
-  $variables['node']->customer['fullname'] = "Rohit Tiwari";
+  // $variables['node']->customer['company_name'] ="EvolentHealth";
+  // $variables['node']->customer['fullname'] = "Rohit Tiwari";
+  // dsm($variables,"f");
 }
+

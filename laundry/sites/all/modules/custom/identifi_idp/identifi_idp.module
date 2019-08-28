@@ -1,4 +1,22 @@
 <?php
 
 
+/*
+$node = node_load(27);
+dsm($node,"n");
+$laundry_items = field_collection_item_load($node->field_laundry_items['und'][0]['value']);
+dsm($laundry_items,"test");
+$iron_laundry_type = field_collection_item_load($laundry_items->field_iron_laundry_type['und'][0]['value']);
+$washing_laundry_type = field_collection_item_load($laundry_items->field_washing_laundry_type['und'][0]['value']);
 
+dsm($iron_laundry_type,"i");
+dsm($washing_laundry_type,"lt");
+
+$iron_line_items  = $iron_laundry_type->field_iron_line_item['und'];
+
+foreach($iron_line_items as $item) {
+  $iron_laundry_type_collection[] = field_collection_item_load($item['value']);
+  array_reverse(taxonomy_get_parents_all(59))
+}
+
+*/
