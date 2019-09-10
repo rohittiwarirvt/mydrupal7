@@ -13,8 +13,7 @@ function laundry_menu() {
     'title' => 'Invoice in HTML print format',
     'page callback' => '_laundry_invoice_view_print',
     'page arguments' => array(3),
-    'access callback' => 'user_access',
-    'access arguments' => array('access content'),
+    'access callback' => 'user_is_logged_in',
     'type' => MENU_CALLBACK,
   );
 
@@ -28,7 +27,7 @@ function laundry_menu() {
  * @return [type] [description]
  */
 function _laundry_invoice_view_print($order) {
-  echo  _laundry_invoice_get_html($order);
+  return   _laundry_invoice_get_html($order);
   //drupal_exit();
 }
 
@@ -145,9 +144,29 @@ function _laundry_test_invoice_get_html($node) {
 }
 
 
-function template_preprocess_invoice_body(&$variables) {
-  // $variables['node']->customer['company_name'] ="EvolentHealth";
-  // $variables['node']->customer['fullname'] = "Rohit Tiwari";
-  // dsm($variables,"f");
+/**
+ * Implements hook_view()
+ *
+ * @param object $node
+ * @param string $view_mode
+ */
+function laundry_node_view($node, $view_mode) {
+
+  switch ($node->type) {
+    case 'order':
+      $node->content['invoice_links'] = array(
+          '#type' => 'link',
+          '#title' => t('Generate Invoice'),
+          '#href' => 'laundry/invoice/print/' .$node->nid,
+          '#weight' => 100
+        );
+      break;
+
+    default:
+      # code...
+      break;
+  }
+  return $node;
 }
+
 
