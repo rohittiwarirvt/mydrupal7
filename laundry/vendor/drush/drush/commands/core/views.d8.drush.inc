@@ -36,12 +36,12 @@ function views_drush_command() {
 
   $items['views-dev'] = array(
     'description' => 'Set the Views settings to more developer-oriented values.',
-    'aliases' => array('vd', 'views:dev'),
+    'aliases' => array('vd'),
   ) + $base;
 
   $items['views-list'] = array(
     'description' => 'Get a list of all views in the system.',
-    'aliases' => array('vl', 'views:list'),
+    'aliases' => array('vl'),
     'options' => array(
       'name' => array(
         'description' => 'A string contained in the view\'s name to filter the results with.',
@@ -76,7 +76,7 @@ function views_drush_command() {
 
   $items['views-execute'] = array(
     'description' => 'Execute a view and get the results.',
-    'aliases' => array('vex', 'views:execute'),
+    'aliases' => array('vex'),
     'arguments' => array(
       'view' => 'The name of the view to execute.',
       'display' => 'The display ID to execute. If none specified, the default display will be used.',
@@ -107,7 +107,7 @@ function views_drush_command() {
   $items['views-analyze'] = array(
     'drupal dependencies' => array('views', 'views_ui'),
     'description' => 'Get a list of all Views analyze warnings',
-    'aliases' => array('va', 'views:analyze'),
+    'aliases' => array('va'),
     'options' => array(
       'format' => array(
         'description' => 'Define the output format. Known formats are: json, print_r, and export.',
@@ -121,7 +121,7 @@ function views_drush_command() {
       'views' => 'A space delimited list of view names.',
     ),
     'required-arguments' => 1,
-    'aliases' => array('ven', 'views:enable'),
+    'aliases' => array('ven'),
     'examples' => array(
       'drush ven frontpage taxonomy_term' => 'Enable the frontpage and taxonomy_term views.',
     ),
@@ -133,7 +133,7 @@ function views_drush_command() {
       'views' => 'A space delimited list of view names.',
     ),
     'required-arguments' => 1,
-    'aliases' => array('vdis', 'views:disable'),
+    'aliases' => array('vdis'),
     'examples' => array(
       'drush vdis frontpage taxonomy_term' => 'Disable the frontpage and taxonomy_term views.',
     ),

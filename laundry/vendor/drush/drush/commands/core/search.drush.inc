@@ -27,7 +27,6 @@ function search_drush_command() {
         'message-template' => '!remaining/!total',
       ),
       'output-data-type' => 'format-list',
-      'aliases' => array('search:status'),
     ),
   );
   $items['search-index'] = array(
@@ -40,7 +39,6 @@ function search_drush_command() {
     'options' => array(
       'immediate' => 'Rebuild the index immediately, instead of waiting for cron.',
     ),
-    'aliases' => array('search:index'),
   );
   return $items;
 }

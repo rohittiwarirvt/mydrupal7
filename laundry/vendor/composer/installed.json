@@ -298,21 +298,21 @@
     },
     {
         "name": "drush/drush",
-        "version": "8.3.0",
-        "version_normalized": "8.3.0.0",
+        "version": "8.1.17",
+        "version_normalized": "8.1.17.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drush-ops/drush.git",
-            "reference": "59454e59b1139d3c0264504e42359397d828d459"
+            "reference": "7ea681dc7e639f6ddab906e78611d3558f88d9b0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/drush-ops/drush/zipball/59454e59b1139d3c0264504e42359397d828d459",
-            "reference": "59454e59b1139d3c0264504e42359397d828d459",
+            "url": "https://api.github.com/repos/drush-ops/drush/zipball/7ea681dc7e639f6ddab906e78611d3558f88d9b0",
+            "reference": "7ea681dc7e639f6ddab906e78611d3558f88d9b0",
             "shasum": ""
         },
         "require": {
-            "consolidation/annotated-command": "^2.12.0",
+            "consolidation/annotated-command": "^2.8.1",
             "consolidation/output-formatters": "~3",
             "pear/console_table": "~1.3.1",
             "php": ">=5.4.5",
@@ -323,7 +323,6 @@
             "symfony/finder": "~2.7|^3",
             "symfony/var-dumper": "~2.7|^3",
             "symfony/yaml": "~2.3|^3",
-            "webflo/drupal-finder": "^1.1.0",
             "webmozart/path-util": "~2"
         },
         "require-dev": {
@@ -339,7 +338,7 @@
             "drush/config-extra": "Provides configuration workflow commands, such as config-merge.",
             "ext-pcntl": "*"
         },
-        "time": "2019-07-09T21:53:08+00:00",
+        "time": "2018-05-23T16:58:54+00:00",
         "bin": [
             "drush",
             "drush.launcher",
@@ -357,9 +356,6 @@
             "psr-0": {
                 "Drush": "lib/",
                 "Consolidation": "lib/"
-            },
-            "psr-4": {
-                "Drush\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",

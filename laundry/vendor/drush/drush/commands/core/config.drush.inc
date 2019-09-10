@@ -58,7 +58,7 @@ function config_drush_command() {
       'default' => 'yaml',
       'pipe-format' => 'var_export',
     ),
-    'aliases' => array('cget', 'config:get'),
+    'aliases' => array('cget'),
     'core' => array('8+'),
   );
 
@@ -84,14 +84,14 @@ function config_drush_command() {
     'examples' => array(
       'drush config-set system.site page.front node' => 'Sets system.site:page.front to "node".',
     ),
-    'aliases' => array('cset', 'config:set'),
+    'aliases' => array('cset'),
     'core' => array('8+'),
   );
 
   $items['config-export'] = array(
     'description' => 'Export configuration to a directory.',
     'core' => array('8+'),
-    'aliases' => array('cex', 'config:export'),
+    'aliases' => array('cex'),
     'arguments' => array(
       'label' => "A config directory label (i.e. a key in \$config_directories array in settings.php). Defaults to 'sync'",
     ),
@@ -136,13 +136,13 @@ function config_drush_command() {
     'examples' => array(
       'drush config-import --partial' => 'Import configuration; do not remove missing configuration.',
     ),
-    'aliases' => array('cim', 'config:import'),
+    'aliases' => array('cim'),
   );
 
   $items['config-list'] = array(
     'description' => 'List config names by prefix.',
     'core' => array('8+'),
-    'aliases' => array('cli', 'config:list'),
+    'aliases' => array('cli'),
     'arguments' => array(
       'prefix' => 'The config prefix. For example, "system". No prefix will return all names in the system.',
     ),
@@ -161,7 +161,7 @@ function config_drush_command() {
   $items['config-edit'] = $deps + array(
     'description' => 'Open a config file in a text editor. Edits are imported into active configuration after closing editor.',
     'core' => array('8+'),
-    'aliases' => array('cedit', 'config:edit'),
+    'aliases' => array('cedit'),
     'arguments' => array(
       'config-name' => 'The config object name, for example "system.site".',
     ),
@@ -178,7 +178,7 @@ function config_drush_command() {
   $items['config-delete'] = array(
     'description' => 'Delete a configuration object.',
     'core' => array('8+'),
-    'aliases' => array('cdel', 'config:delete'),
+    'aliases' => array('cdel'),
     'arguments' => array(
       'config-name' => 'The config object name, for example "system.site".',
       'key' => 'A config key to clear, for example "page.front".',
@@ -191,7 +191,7 @@ function config_drush_command() {
     // 'core' => array('8+'), Operates on remote sites so not possible to declare this locally.
     'drush dependencies' => array('config', 'core'), // core-rsync, core-execute.
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
-    'aliases' => array('cpull', 'config:pull'),
+    'aliases' => array('cpull'),
     'arguments' => array(
       'source' => 'A site-alias or the name of a subdirectory within /sites whose config you want to copy from.',
       'target' => 'A site-alias or the name of a subdirectory within /sites whose config you want to replace.',
@@ -800,7 +800,7 @@ function drush_config_pull($source, $destination) {
   );
   drush_log(dt('Starting to export configuration on Target.'), LogLevel::OK);
   $return = drush_invoke_process($source, 'config-export', array(), $global_options + $export_options, $backend_options);
-  if ($return === FALSE || $return['error_status']) {
+  if ($return['error_status']) {
     return drush_set_error('DRUSH_CONFIG_PULL_EXPORT_FAILED', dt('Config-export failed.'));
   }
   else {

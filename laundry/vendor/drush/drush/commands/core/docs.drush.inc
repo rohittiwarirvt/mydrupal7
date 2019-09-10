@@ -40,7 +40,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/README.md'),
-    'aliases' => array('docs:readme'),
   );
   $items['docs-bisect'] = array(
     'description' => 'git bisect and Drush may be used together to find the commit an error was introduced in.',
@@ -49,7 +48,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/examples/git-bisect.example.sh'),
-    'aliases' => array('docs:bisect'),
   );
   $items['docs-bashrc'] = array(
     'description' => 'Bashrc customization examples for Drush.',
@@ -58,7 +56,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/examples/example.bashrc'),
-    'aliases' => array('docs:bashrc'),
   );
   $items['docs-configuration'] = array(
     'description' => 'Configuration overview with examples from example.drushrc.php.',
@@ -67,7 +64,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/examples/example.drushrc.php'),
-    'aliases' => array('docs:configuration'),
   );
   $items['docs-config-exporting'] = array(
     'description' => 'Drupal configuration export instructions, including customizing configuration by environment.',
@@ -76,7 +72,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/docs/config-exporting.md'),
-    'aliases' => array('docs:config:exporting'),
   );
   $items['docs-aliases'] = array(
     'description' => 'Site aliases overview on creating your own aliases for commonly used Drupal sites with examples from example.aliases.drushrc.php.',
@@ -85,7 +80,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/examples/example.aliases.drushrc.php'),
-    'aliases' => array('docs:aliases'),
   );
   $items['docs-ini-files'] = array(
     'description' => 'php.ini or drush.ini configuration to set PHP values for use with Drush.',
@@ -94,7 +88,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/examples/example.drush.ini'),
-    'aliases' => array('docs:ini-files'),
   );
   $items['docs-bastion'] = array(
     'description' => 'Bastion server configuration: remotely operate on a Drupal sites behind a firewall.',
@@ -103,7 +96,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/docs/bastion.md'),
-    'aliases' => array('docs:bastion'),
   );
   $items['docs-bootstrap'] = array(
     'description' => 'Bootstrap explanation: how Drush starts up and prepares the Drupal environment for use with the command.',
@@ -112,7 +104,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/docs/bootstrap.md'),
-    'aliases' => array('docs:bootstrap'),
   );
   $items['docs-cron'] = array(
     'description' => 'Crontab instructions for running your Drupal cron tasks via `drush cron`.',
@@ -121,7 +112,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/docs/cron.md'),
-    'aliases' => array('docs:cron'),
   );
   $items['docs-scripts'] = array(
     'description' => 'Shell script overview on writing simple sequences of Drush statements.',
@@ -130,7 +120,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/docs/shellscripts.md'),
-    'aliases' => array('docs:scripts'),
   );
   $items['docs-shell-aliases'] = array(
     'description' => 'Shell alias overview on creating your own aliases for commonly used Drush commands.',
@@ -139,7 +128,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/docs/shellaliases.md'),
-    'aliases' => array('docs:shell-aliases'),
   );
   $items['docs-commands'] = array(
     'description' => 'Drush command instructions on creating your own Drush commands.',
@@ -148,14 +136,12 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/docs/commands.md'),
-    'aliases' => array('docs:commands'),
   );
   $items['docs-errorcodes'] = array(
     'description' => 'Error code list containing all identifiers used with drush_set_error.',
     'hidden' => TRUE,
     'topic' => TRUE,
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
-    'aliases' => array('docs:errorcodes'),
   );
   $items['docs-api'] = array(
     'description' => 'Drush API',
@@ -164,7 +150,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/drush.api.php'),
-    'aliases' => array('docs:api'),
   );
   $items['docs-context'] = array(
     'description' => 'Contexts overview explaining how Drush manages command line options and configuration file settings.',
@@ -173,7 +158,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/docs/context.md'),
-    'aliases' => array('docs:context'),
   );
   $items['docs-examplescript'] = array(
     'description' => 'Example Drush script.',
@@ -182,7 +166,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/examples/helloworld.script'),
-    'aliases' => array('docs:examplescript'),
   );
   $items['docs-examplecommand'] = array(
     'description' => 'Example Drush command file.',
@@ -191,7 +174,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/examples/sandwich.drush.inc'),
-    'aliases' => array('docs:examplecommand'),
   );
   $items['docs-example-sync-extension'] = array(
     'description' => 'Example Drush commandfile that extends sql-sync to enable development modules in the post-sync hook.',
@@ -200,7 +182,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/examples/sync_enable.drush.inc'),
-    'aliases' => array('docs:example-sync-extension'),
   );
   $items['docs-example-sync-via-http'] = array(
     'description' => 'Example Drush commandfile that extends sql-sync to allow transfer of the sql dump file via http rather than ssh and rsync.',
@@ -209,7 +190,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/examples/sync_via_http.drush.inc'),
-    'aliases' => array('docs:example-sync-via-http'),
   );
   $items['docs-policy'] = array(
     'description' => 'Example policy file.',
@@ -218,7 +198,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/examples/policy.drush.inc'),
-    'aliases' => array('docs:policy'),
   );
   $items['docs-strict-options'] = array(
     'description' => 'Strict option handling, and how commands that use it differ from regular Drush commands.',
@@ -227,7 +206,6 @@ function docs_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'callback' => 'drush_print_file',
     'callback arguments' => array($docs_dir . '/docs/strict-options.md'),
-    'aliases' => array('docs:strict-options'),
   );
   return $items;
 }

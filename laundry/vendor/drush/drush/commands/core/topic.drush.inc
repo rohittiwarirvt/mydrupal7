@@ -24,7 +24,7 @@ function topic_drush_command() {
     ),
     'bootstrap' => DRUSH_BOOTSTRAP_NONE,
     'remote-tty' => TRUE,
-    'aliases' => array('topic', 'core:topic'),
+    'aliases' => array('topic'),
     'topics' => array('docs-readme'),
   );
 

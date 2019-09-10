@@ -168,5 +168,14 @@ function laundry_node_view($node, $view_mode) {
   }
   return $node;
 }
+/**
+ * Implements hook_entity_info_alter().
+ */
+function laundry_entity_info_alter(&$entity_info) {
+  if (isset($entity_info['user'])) {
+    $entity_info['user']['inline entity form'] = array(
+      'controller' => 'UserInlineEntityFormController',
+    );
+  }
 
-
+}

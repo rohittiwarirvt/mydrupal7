@@ -22,7 +22,6 @@ return array(
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'JakubOnderka\\PhpConsoleHighlighter\\' => array($vendorDir . '/jakub-onderka/php-console-highlighter/src'),
     'JakubOnderka\\PhpConsoleColor\\' => array($vendorDir . '/jakub-onderka/php-console-color/src'),
-    'Drush\\' => array($vendorDir . '/drush/drush/src'),
     'Consolidation\\OutputFormatters\\' => array($vendorDir . '/consolidation/output-formatters/src'),
     'Consolidation\\AnnotatedCommand\\' => array($vendorDir . '/consolidation/annotated-command/src'),
 );

@@ -16,9 +16,6 @@ use Consolidation\AnnotatedCommand\AnnotationData;
 use Consolidation\AnnotatedCommand\CommandData;
 use Drush\Command\DrushInputAdapter;
 use Drush\Command\DrushOutputAdapter;
-use Drush\Drush;
-use Drush\SiteAlias\AliasManagerAdapterInjector;
-use Drush\SiteAlias\ProcessManagerInjector;
 
 use Symfony\Component\Console\Output\ConsoleOutput;
 
@@ -33,10 +30,6 @@ function annotationcommand_adapter_get_discovery() {
     $discovery = new CommandFileDiscovery();
     $discovery
       ->setIncludeFilesAtBase(false)
-      ->setSearchDepth(3)
-      ->ignoreNamespacePart('contrib', 'Commands')
-      ->ignoreNamespacePart('custom', 'Commands')
-      ->ignoreNamespacePart('src')
       ->setSearchLocations(['Commands'])
       ->setSearchPattern('#.*Commands.php$#');
   }
@@ -106,11 +99,9 @@ function annotationcommand_adapter_commands() {
       unset($annotation_commandfiles[$key]);
     }
   }
-  $site_wide_commands = annotationcommand_adapter_get_commands($annotation_commandfiles);
+  $commands = annotationcommand_adapter_get_commands($annotation_commandfiles);
   $module_service_commands = drush_get_context('DRUSH_MODULE_SERVICE_COMMANDS');
-  $commands = array_merge($site_wide_commands, $module_service_commands);
-
-  return $commands;
+  return array_merge($commands, $module_service_commands);
 }
 
 /**
@@ -240,7 +231,6 @@ function annotationcommand_adapter_process_command() {
 
   $input = new DrushInputAdapter($args, annotationcommand_adapter_get_options($command), $command['command']);
   $output = new DrushOutputAdapter();
-  annotationcommand_adapter_input($input);
   $annotationData = $command['annotations'];
   $commandData = new CommandData(
     $annotationData,
@@ -249,15 +239,6 @@ function annotationcommand_adapter_process_command() {
   );
   $commandData->setIncludeOptionsInArgs($command['add-options-to-arguments']);
   $names = annotationcommand_adapter_command_names($command);
-
-  // For now, the only thing that can be injected is the InputInterface.
-  foreach ($command['injected-classes'] as $injected) {
-    switch ($injected) {
-      case 'Symfony\Component\Console\Input\InputInterface':
-        $commandData->injectInstance($input);
-        break;
-    }
-  }
 
   // n.b.: backend result is set by a post-alter hook.
   $result = $commandprocessor->process(
@@ -268,14 +249,6 @@ function annotationcommand_adapter_process_command() {
   );
 
   return $result;
-}
-
-function annotationcommand_adapter_input($setInput = null) {
-  static $cacheInput = null;
-  if ($setInput != null) {
-    $cacheInput = $setInput;
-  }
-  return $cacheInput;
 }
 
 /**
@@ -292,20 +265,14 @@ function annotationcommand_adapter_get_commands($annotation_commandfiles) {
   //   'modules/default_content/src/CliTools/DefaultContentCommands.php' =>
   //   '\\Drupal\\default_content\\CliTools\\DefaultContentCommands',
   foreach ($annotation_commandfiles as $commandfile_path => $commandfile_class) {
-    try {
-      if (file_exists($commandfile_path) && ($commandfile_class != '\Drush\Commands\DrushCommands')) {
-        $commandhandler = annotationcommand_adapter_create_commandfile_instance($commandfile_path, $commandfile_class);
-        $commands_for_this_commandhandler = annotationcommand_adapter_get_commands_for_commandhandler($commandhandler, $commandfile_path);
-        $commands = array_merge($commands, $commands_for_this_commandhandler);
-      }
+    if (file_exists($commandfile_path)) {
+      $commandhandler = annotationcommand_adapter_create_commandfile_instance($commandfile_path, $commandfile_class);
+      $commands_for_this_commandhandler = annotationcommand_adapter_get_commands_for_commandhandler($commandhandler, $commandfile_path);
+      $commands = array_merge($commands, $commands_for_this_commandhandler);
     }
-    catch (\Exception $e) {}
   }
   return $commands;
 }
-
-use Psr\Log\LoggerAwareInterface;
-
 
 /**
  * Create and cache a commandfile instance.
@@ -320,22 +287,6 @@ function annotationcommand_adapter_create_commandfile_instance($commandfile_path
   if (!isset($cache[$commandfile_path])) {
     include_once $commandfile_path;
     $commandhandler = new $commandfile_class;
-
-    // Inject logger if requested
-    if ($commandhandler instanceof LoggerAwareInterface) {
-      $commandhandler->setLogger(Drush::logger());
-    }
-
-    if (class_exists('\Consolidation\SiteAlias\SiteAliasManager')) {
-      $alias_manager_injector = new AliasManagerAdapterInjector();
-      $alias_manager_injector->inflect($commandhandler);
-    }
-
-    if (class_exists('\Consolidation\SiteProcess\ProcessManager')) {
-      $process_manager_injector = new ProcessManagerInjector();
-      $process_manager_injector->inflect($commandhandler);
-    }
-
     $cache[$commandfile_path] = $commandhandler;
   }
   return $cache[$commandfile_path];
@@ -417,33 +368,6 @@ function annotationcommand_adapter_get_command_for_console_command($console_comm
   return $commands;
 }
 
-function annotationcommand_adapter_bootstrap_phase_index($phase)
-{
-  $phaseMap = annotationcommand_adapter_bootstrap_phase_map();
-  if (isset($phaseMap[$phase])) {
-    return $phaseMap[$phase];
-  }
-
-  if ((substr($phase, 0, 16) != 'DRUSH_BOOTSTRAP_') || (!defined($phase))) {
-    return;
-  }
-  return constant($phase);
-}
-
-function annotationcommand_adapter_bootstrap_phase_map()
-{
-  return [
-    'none' => DRUSH_BOOTSTRAP_NONE,
-    'root' => DRUSH_BOOTSTRAP_DRUPAL_ROOT,
-    'site' => DRUSH_BOOTSTRAP_DRUPAL_SITE,
-    'config' => DRUSH_BOOTSTRAP_DRUPAL_CONFIGURATION,
-    'configuration' => DRUSH_BOOTSTRAP_DRUPAL_CONFIGURATION,
-    'db' => DRUSH_BOOTSTRAP_DRUPAL_DATABASE,
-    'database' => DRUSH_BOOTSTRAP_DRUPAL_DATABASE,
-    'full' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
-  ];
-}
-
 /**
  * Convert an annotated command command handler object into a Drush $command record.
  *
@@ -454,9 +378,6 @@ function annotationcommand_adapter_bootstrap_phase_map()
  * @return array Drush $command record
  */
 function annotationcommand_adapter_get_commands_for_commandhandler($commandhandler, $commandfile_path, $includeAllPublicMethods = true) {
-  if (!$commandhandler) {
-    return [];
-  }
   $cache =& drush_get_context('DRUSH_ANNOTATION_COMMANDS_FOR_COMMANDFILE');
   if (isset($cache[$commandfile_path])) {
     return $cache[$commandfile_path];
@@ -480,8 +401,7 @@ function annotationcommand_adapter_get_commands_for_commandhandler($commandhandl
     $handle_remote_commands = $commandinfo->getAnnotation('handle-remote-commands') == 'true';
     // TODO: if there is no 'bootstrap' annotation, maybe we should default to NONE instead of FULL?
     if ($bootstrap = $commandinfo->getAnnotation('bootstrap')) {
-      // Convert from the bootstrap string to the appropriate bootstrap phase index
-      $bootstrap = annotationcommand_adapter_bootstrap_phase_index($bootstrap);
+      $bootstrap = constant($bootstrap);
     }
     $command = [
       'name' => $command_name,
@@ -522,7 +442,6 @@ function annotationcommand_adapter_get_commands_for_commandhandler($commandhandl
       }
     }
     $command['annotations'] = $commandinfo->getAnnotations();
-    $command['injected-classes'] = $commandinfo->getInjectedClasses();
     // If the command has a '@return' annotation, then
     // remember information we will need to use the output formatter.
     $returnType = $commandinfo->getReturnType();

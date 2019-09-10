@@ -45,10 +45,6 @@ class ComposerStaticInit77529bf3da105b4d7f340ed22de5cba2
             'JakubOnderka\\PhpConsoleHighlighter\\' => 35,
             'JakubOnderka\\PhpConsoleColor\\' => 29,
         ),
-        'D' => 
-        array (
-            'Drush\\' => 6,
-        ),
         'C' => 
         array (
             'Consolidation\\OutputFormatters\\' => 31,
@@ -120,10 +116,6 @@ class ComposerStaticInit77529bf3da105b4d7f340ed22de5cba2
         'JakubOnderka\\PhpConsoleColor\\' => 
         array (
             0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
-        ),
-        'Drush\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/drush/drush/src',
         ),
         'Consolidation\\OutputFormatters\\' => 
         array (
