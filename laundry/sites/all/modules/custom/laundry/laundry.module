@@ -27,7 +27,7 @@ function laundry_menu() {
  * @return [type] [description]
  */
 function _laundry_invoice_view_print($order) {
-  return   _laundry_invoice_get_html($order);
+  echo   _laundry_invoice_get_html($order);
   //drupal_exit();
 }
 
